@@ -31,6 +31,7 @@ var white_wizard = preload("res://Scenes/white_pieces/wizard.tscn")
 #var white_marshal = preload()
 #var white_dragoon = preload()
 var black_footman = preload("res://Scenes/black_pieces/black_footman.tscn")
+var black_champion = preload("res://Scenes/black_pieces/black_champion.tscn")
 #endregion
 
 # Called when the node enters the scene tree for the first time.
@@ -173,6 +174,39 @@ func summoned_a_piece(piece_to_make):
 				var priest_scene = white_priest.instantiate()
 				add_child(priest_scene)
 				priest_scene.position = board.map_to_local(instantiate_location)
+	if $"/root/Main".is_white_turn == false:
+		if instantiate_location != null:
+			if piece_to_make == "footman":
+				var footman_scene = black_footman.instantiate()
+				add_child(footman_scene)
+				#var footman_instantiate_pos = Vector2i(2,2)
+				footman_scene.position = board.map_to_local(instantiate_location)
+				next_turn()
+			#if piece_to_make == "pikeman":
+				#var pikeman_scene = white_pikeman.instantiate()
+				#add_child(pikeman_scene)
+				#pikeman_scene.position = board.map_to_local(instantiate_location)
+				#next_turn()
+			if piece_to_make == "champion":
+				var champion_scene = black_champion.instantiate()
+				add_child(champion_scene)
+				champion_scene.position = board.map_to_local(instantiate_location)
+			#if piece_to_make == "seer":
+				#var seer_scene = white_seer.instantiate()
+				#add_child(seer_scene)
+				#seer_scene.position = board.map_to_local(instantiate_location)
+			#if piece_to_make == "wizard":
+				#var wizard_scene = white_wizard.instantiate()
+				#add_child(wizard_scene)
+				#wizard_scene.position = board.map_to_local(instantiate_location)
+			#if piece_to_make == "assassin":
+				#var assassin_scene = white_assassin.instantiate()
+				#add_child(assassin_scene)
+				#assassin_scene.position = board.map_to_local(instantiate_location)
+			#if piece_to_make == "priest":
+				#var priest_scene = white_priest.instantiate()
+				#add_child(priest_scene)
+				#priest_scene.position = board.map_to_local(instantiate_location)
 		elif instantiate_location == null:
 			summon_move_checker = false
 #endregion

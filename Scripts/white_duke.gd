@@ -18,7 +18,10 @@ var is_front: bool = true
 var mouse_entered_white_duke: bool = false
 var is_holder_clicked:bool = false
 var cell_size:int = 16
-@onready var min_left:int
+@onready var min_left = get_node("/root/Main").min_left
+@onready var min_right = get_node("/root/Main").min_right
+@onready var min_top = get_node("/root/Main").min_top
+@onready var min_bottom = get_node("/root/Main").min_bottom
 
 var move_coordinates
 var holder
@@ -66,7 +69,7 @@ func get_summon_data():
 			var x9 = $"/root/Main/board_layer".get_surrounding_cells(duke_pos)
 			placeable_locations.clear()
 			for i in x9:
-				if i.x > -1 && i.x < 6 && i.y > -1 && i.y < 6:
+				if i.x > min_left && i.x < min_right && i.y > min_top && i.y < min_bottom:
 					placeable_locations.append(i)
 			#print("This is placeable locations ",placeable_locations)
 			new_positions = updates_moves_to_not_include_white_pieces(placeable_locations)

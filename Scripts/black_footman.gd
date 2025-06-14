@@ -45,7 +45,7 @@ func do_moves():
 	jump_array.clear()
 	if is_front:
 		move_array = [
-			Vector2i(1,1),Vector2i(-1,-1),Vector2i(-1,1),Vector2i(0,-2),Vector2i(1,-1)
+			Vector2i(1,1),Vector2i(-1,-1),Vector2i(-1,1),Vector2i(0,2),Vector2i(1,-1)
 		]
 
 	elif is_front == false:
@@ -126,7 +126,7 @@ func next_turn():
 		$AnimatedSprite2D.play("front")
 	call_deferred("x10")
 func x10():
-	$"/root/Main".is_white_turn = false
+	$"/root/Main".is_white_turn = true
 
 func hide_children():
 	for child in range($".".get_children().size()):

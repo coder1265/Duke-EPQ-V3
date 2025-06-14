@@ -21,6 +21,10 @@ config/icon="res://Assets/Screen assets/Loading screen.png"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [global_group]
 
 white_pieces=""
