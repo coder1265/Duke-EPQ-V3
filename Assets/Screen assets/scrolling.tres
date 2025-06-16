@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://jwqgfpa5uf34"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://jwqgfpa5uf34"]
 
 [ext_resource type="Texture2D" uid="uid://dboa45h6e8tw7" path="res://Assets/SpriteSheet.png" id="1_2xx33"]
 [ext_resource type="Texture2D" uid="uid://dan6csmgibwva" path="res://Assets/Screen assets/Sprite sheet for Basic Pack.png" id="1_vekqv"]
+[ext_resource type="FontFile" uid="uid://fa1hvobt0j4m" path="res://Assets/Yasmen.ttf" id="3_bah0p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t1it1"]
 texture = ExtResource("1_2xx33")
@@ -55,6 +56,8 @@ region_rect = Rect2(275, 178, 90, 27)
 Button/styles/hover = SubResource("StyleBoxTexture_t1it1")
 Button/styles/normal = SubResource("StyleBoxTexture_t1it1")
 Button/styles/pressed = SubResource("StyleBoxTexture_sxk1r")
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("3_bah0p")
 Label/styles/normal = SubResource("StyleBoxTexture_leq74")
 VScrollBar/styles/grabber = SubResource("StyleBoxTexture_5yf55")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_n7wae")

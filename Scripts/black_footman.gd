@@ -24,13 +24,14 @@ func _on_mouse_exited() -> void:
 
 func _input(_event):
 	if Input.is_action_just_pressed("left_mouse_click"):
+		if showing_moves:
+			print("This is showing_moves",showing_moves)
+			clicked_moves()
 		if mouse_entered_self:
 			var is_white = get_node("/root/Main").is_white_turn
 			if not is_white:
 				do_moves()
-		if showing_moves:
-			print("This is showing_moves",showing_moves)
-			clicked_moves()
+
 		if mouse_entered_self == false:
 				hide_children()
 				showing_moves = false
@@ -103,10 +104,7 @@ func clicked_moves():
 	var current_mouse_pos = board.local_to_map(get_global_mouse_position()) - position_on_board
 	print("This is current mouse position for movement click", current_mouse_pos)
 	var combined_array:Array = []
-	if is_front:
-		combined_array = move_array + jump_array
-	elif is_front == false:
-		combined_array = jump_array
+	combined_array = move_array
 	if combined_array.has(current_mouse_pos):
 		var enemy_areas = get_tree().get_nodes_in_group("white_pieces")
 		for area in enemy_areas:
@@ -114,8 +112,8 @@ func clicked_moves():
 				if area_tilemap_pos == current_mouse_pos:
 					area.queue_free()
 		#var current_pos = position_on_board
-		self.position = board.map_to_local(current_mouse_pos + position_on_board)
-		next_turn()
+	self.position = board.map_to_local(current_mouse_pos + position_on_board)
+	call_deferred("next_turn")
 
 func next_turn():
 	if is_front:

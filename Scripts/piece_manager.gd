@@ -110,10 +110,14 @@ func black_scenarios():
 			
 func black_wins():
 	print("Black wins")
+	Globals.winning_turn = "Black"
+	get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
+	
 
 func white_wins():
 	print("white_wins")
-	#get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
+	Globals.winning_turn = "White"
+	get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
 
 #endregion 
 

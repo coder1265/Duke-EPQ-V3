@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://r6rdqh8wew7q"]
+[gd_scene load_steps=29 format=3 uid="uid://r6rdqh8wew7q"]
 
 [ext_resource type="Texture2D" uid="uid://bfr45dbtk537i" path="res://Assets/Screen assets/Board icon.png" id="1_5j5lu"]
 [ext_resource type="Script" path="res://Scripts/play_screen.gd" id="1_20yao"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://c3fasiat0gjgv" path="res://Assets/Screen assets/button_normal.png" id="5_r0dul"]
 [ext_resource type="Texture2D" uid="uid://dxudlrkyk7200" path="res://Assets/Screen assets/other_button.png" id="7_txotu"]
 [ext_resource type="Theme" uid="uid://jwqgfpa5uf34" path="res://Assets/Screen assets/scrolling.tres" id="8_28s1c"]
-[ext_resource type="Texture2D" uid="uid://b32qlrwwa1bis" path="res://Assets/Screen assets/SpriteSheet.png" id="8_ai5ny"]
 [ext_resource type="Texture2D" uid="uid://c0n4bao4ciu60" path="res://Assets/duke_pdf/Screenshot 2025-06-12 204002.png" id="9_yub0s"]
 [ext_resource type="Texture2D" uid="uid://3qo2lfga2370" path="res://Assets/Screen assets/page2.png" id="10_5c8yy"]
 [ext_resource type="Texture2D" uid="uid://ckn7la3if18jh" path="res://Assets/Screen assets/page3.png" id="11_f7lyd"]
@@ -21,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://cu3hu8ij4mple" path="res://Assets/Screen assets/page11.png" id="19_axv3d"]
 [ext_resource type="Texture2D" uid="uid://b28urqfljrlcn" path="res://Assets/Screen assets/page12.png" id="20_hghp3"]
 [ext_resource type="Texture2D" uid="uid://exxg1prqvgif" path="res://Assets/Screen assets/page13.png" id="21_kbrjj"]
+[ext_resource type="PackedScene" uid="uid://db6mrhr4668sd" path="res://Scenes/sprites.tscn" id="21_wa4n3"]
+[ext_resource type="Texture2D" uid="uid://dan6csmgibwva" path="res://Assets/Screen assets/Sprite sheet for Basic Pack.png" id="22_lwrc4"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_sdpge"]
 keycode = 80
@@ -41,17 +42,9 @@ texture_margin_top = 15.0
 texture_margin_right = 15.0
 texture_margin_bottom = 15.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ojio6"]
-texture = ExtResource("8_ai5ny")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-region_rect = Rect2(40, 550, 33, 35)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40b31"]
+texture = ExtResource("22_lwrc4")
+region_rect = Rect2(868, 134, 23, 22)
 
 [node name="Play" type="Control"]
 layout_mode = 3
@@ -205,7 +198,7 @@ theme_override_constants/separation = 50
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Button" type="Button" parent="How_to_play_menu/HBoxContainer/VBoxContainer"]
+[node name="rules" type="Button" parent="How_to_play_menu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("3_rg7de")
@@ -213,7 +206,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxTexture_w8ifh")
 text = "Rules"
 
-[node name="Button2" type="Button" parent="How_to_play_menu/HBoxContainer/VBoxContainer"]
+[node name="sprites" type="Button" parent="How_to_play_menu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("3_rg7de")
@@ -221,7 +214,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxTexture_w8ifh")
 text = "My Sprites"
 
-[node name="Button3" type="Button" parent="How_to_play_menu/HBoxContainer/VBoxContainer"]
+[node name="list_credits" type="Button" parent="How_to_play_menu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("3_rg7de")
@@ -235,14 +228,71 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("1_5j5lu")
+patch_margin_left = 7
+patch_margin_top = 6
+patch_margin_right = 9
+patch_margin_bottom = 7
+
+[node name="credits" type="MarginContainer" parent="How_to_play_menu/HBoxContainer/NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="How_to_play_menu/HBoxContainer/NinePatchRect/credits"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Column 1" type="VBoxContainer" parent="How_to_play_menu/HBoxContainer/NinePatchRect/credits/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="How_to_play_menu/HBoxContainer/NinePatchRect/credits/HBoxContainer/Column 1"]
+layout_mode = 2
+theme = ExtResource("8_28s1c")
+text = "My Friends"
+
+[node name="Label" type="Label" parent="How_to_play_menu/HBoxContainer/NinePatchRect/credits/HBoxContainer/Column 1"]
+layout_mode = 2
+theme = ExtResource("8_28s1c")
+theme_override_fonts/font = ExtResource("3_rg7de")
+theme_override_font_sizes/font_size = 30
+text = "Catalyst Labs"
+
+[node name="Column 2" type="VBoxContainer" parent="How_to_play_menu/HBoxContainer/NinePatchRect/credits/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label2" type="Label" parent="How_to_play_menu/HBoxContainer/NinePatchRect/credits/HBoxContainer/Column 2"]
+layout_mode = 2
+theme = ExtResource("8_28s1c")
+text = "Brackneys_tutorial - Youtube"
+
+[node name="Label3" type="Label" parent="How_to_play_menu/HBoxContainer/NinePatchRect/credits/HBoxContainer/Column 2"]
+layout_mode = 2
+theme = ExtResource("8_28s1c")
+text = "Jackie Codes"
+
+[node name="Label" type="Label" parent="How_to_play_menu/HBoxContainer/NinePatchRect/credits/HBoxContainer/Column 2"]
+layout_mode = 2
+theme = ExtResource("8_28s1c")
+text = "DevWorm - Youtube"
 
 [node name="Duke_ruleset" type="ScrollContainer" parent="How_to_play_menu/HBoxContainer/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 14.0
-offset_right = -23.0
+offset_left = 16.0
+offset_top = 6.0
+offset_right = -20.0
 offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -252,12 +302,11 @@ theme = ExtResource("8_28s1c")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="How_to_play_menu/HBoxContainer/NinePatchRect/Duke_ruleset"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="How_to_play_menu/HBoxContainer/NinePatchRect/Duke_ruleset/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-size_flags_horizontal = 8
 texture = ExtResource("9_yub0s")
 
 [node name="TextureRect2" type="TextureRect" parent="How_to_play_menu/HBoxContainer/NinePatchRect/Duke_ruleset/VBoxContainer"]
@@ -309,12 +358,30 @@ texture = ExtResource("20_hghp3")
 layout_mode = 2
 texture = ExtResource("21_kbrjj")
 
+[node name="sprites" type="MarginContainer" parent="How_to_play_menu/HBoxContainer/NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="How_to_play_menu/HBoxContainer/NinePatchRect/sprites"]
+layout_mode = 2
+
+[node name="sprites" parent="How_to_play_menu/HBoxContainer/NinePatchRect/sprites/Control" instance=ExtResource("21_wa4n3")]
+position = Vector2(67.5, 72)
+scale = Vector2(2, 2)
+
 [node name="close_help" type="Button" parent="How_to_play_menu"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_styles/normal = SubResource("StyleBoxTexture_ojio6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_40b31")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_40b31")
+theme_override_styles/normal = SubResource("StyleBoxTexture_40b31")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -322,4 +389,7 @@ anchor_mode = 0
 [connection signal="pressed" from="Buttons/buttons/play" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/buttons/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Buttons/buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="How_to_play_menu/HBoxContainer/VBoxContainer/rules" to="." method="_on_rules_pressed"]
+[connection signal="pressed" from="How_to_play_menu/HBoxContainer/VBoxContainer/sprites" to="." method="_on_sprites_pressed"]
+[connection signal="pressed" from="How_to_play_menu/HBoxContainer/VBoxContainer/list_credits" to="." method="_on_list_credits_pressed"]
 [connection signal="pressed" from="How_to_play_menu/close_help" to="." method="_on_close_help_pressed"]

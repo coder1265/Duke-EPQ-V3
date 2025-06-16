@@ -28,3 +28,20 @@ func _on_credits_pressed() -> void:
 
 func _on_close_help_pressed() -> void:
 	how_to_play_menu.hide()
+
+
+func _on_rules_pressed() -> void:
+	$How_to_play_menu/HBoxContainer/NinePatchRect/Duke_ruleset.show()
+	$How_to_play_menu/HBoxContainer/NinePatchRect/sprites.hide()
+	$How_to_play_menu/HBoxContainer/NinePatchRect/credits.hide()
+
+func _on_sprites_pressed() -> void:
+	$How_to_play_menu/HBoxContainer/NinePatchRect/Duke_ruleset.hide()
+	$How_to_play_menu/HBoxContainer/NinePatchRect/sprites.show()
+	$How_to_play_menu/HBoxContainer/NinePatchRect/credits.hide()
+
+
+func _on_list_credits_pressed() -> void:
+	$How_to_play_menu/HBoxContainer/NinePatchRect/Duke_ruleset.hide()
+	$How_to_play_menu/HBoxContainer/NinePatchRect/sprites.hide()
+	$How_to_play_menu/HBoxContainer/NinePatchRect/credits.show()

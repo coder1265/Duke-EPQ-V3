@@ -15,14 +15,7 @@ var min_bottom:int = 6
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-	#print("Tilemap object is ", global_tilemaplayer_ref)
-	#main_layer_id = self.get_instance_id()
-	#print("Global singleton ID: ", main_layer_id)
-	## Find the node in the current scene
-	#var main_scene = get_tree().current_scene
-	#print("Tilemap object 2 is ", global_tilemaplayer_ref)
-
+	$AudioStreamPlayer2D.playing = true
 func end_turn():
 	if is_white_turn:
 		is_white_turn = false

@@ -63,7 +63,7 @@ texture = ExtResource("1_8yry8")
 position = Vector2(-435, 0)
 emitting = false
 amount = 150
-lifetime = 0.75
+lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
 randomness = 0.63
@@ -79,6 +79,7 @@ scale_amount_curve = SubResource("Curve_kudbp")
 color = Color(1, 0.843137, 0, 1)
 
 [node name="particles_right" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2(436, 0)
 emitting = false
 amount = 150

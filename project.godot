@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/image="res://Assets/Screen assets/Loading screen.png"
 config/icon="res://Assets/Screen assets/Loading screen.png"
 
+[autoload]
+
+Globals="*res://Scripts/globals.gd"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
