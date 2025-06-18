@@ -11,7 +11,7 @@ var white_duke
 var black_duke
 var summon_move_checker:bool = false
 var startup_senario:Array = [1,2] # do this later
-
+var current_piece_under_mouse = null
 @onready var board = $"/root/Main/board_layer"
 
 #region preloading summon pieces
@@ -32,6 +32,8 @@ var white_wizard = preload("res://Scenes/white_pieces/wizard.tscn")
 #var white_dragoon = preload()
 var black_footman = preload("res://Scenes/black_pieces/black_footman.tscn")
 var black_champion = preload("res://Scenes/black_pieces/black_champion.tscn")
+var black_priest = preload("res://Scenes/black_pieces/black_priest.tscn")
+var black_wizard = preload("res://Scenes/black_pieces/black_wizard.tscn")
 #endregion
 
 # Called when the node enters the scene tree for the first time.
@@ -199,18 +201,18 @@ func summoned_a_piece(piece_to_make):
 				#var seer_scene = white_seer.instantiate()
 				#add_child(seer_scene)
 				#seer_scene.position = board.map_to_local(instantiate_location)
-			#if piece_to_make == "wizard":
-				#var wizard_scene = white_wizard.instantiate()
-				#add_child(wizard_scene)
-				#wizard_scene.position = board.map_to_local(instantiate_location)
+			if piece_to_make == "wizard":
+				var wizard_scene = black_wizard.instantiate()
+				add_child(wizard_scene)
+				wizard_scene.position = board.map_to_local(instantiate_location)
 			#if piece_to_make == "assassin":
 				#var assassin_scene = white_assassin.instantiate()
 				#add_child(assassin_scene)
 				#assassin_scene.position = board.map_to_local(instantiate_location)
-			#if piece_to_make == "priest":
-				#var priest_scene = white_priest.instantiate()
-				#add_child(priest_scene)
-				#priest_scene.position = board.map_to_local(instantiate_location)
+			if piece_to_make == "priest":
+				var priest_scene = black_priest.instantiate()
+				add_child(priest_scene)
+				priest_scene.position = board.map_to_local(instantiate_location)
 		elif instantiate_location == null:
 			summon_move_checker = false
 #endregion
@@ -222,5 +224,33 @@ func next_turn():
 		$"/root/Main".is_white_turn = true
 
 func _input(_event: InputEvent) -> void:
+	#if _event is InputEventMouseMotion:
+		#selected_piece()
 	if Input.is_action_just_pressed("left_mouse_click"):
-		print("This is white turn variable ",$"/root/Main".is_white_turn)
+		setup_all_piece_mouse_detection()
+		#print("This is white turn variable ",$"/root/Main".is_white_turn)
+
+
+func setup_all_piece_mouse_detection():
+	# Get all children of the current node
+	for child in get_children():
+		if child is Area2D:
+			# Connect mouse signals if not already connected
+			if not child.mouse_entered.is_connected(_on_piece_mouse_entered):
+				child.mouse_entered.connect(_on_piece_mouse_entered.bind(child))
+			if not child.mouse_exited.is_connected(_on_piece_mouse_exited):
+				child.mouse_exited.connect(_on_piece_mouse_exited.bind(child))
+
+func _on_piece_mouse_entered(piece):
+	current_piece_under_mouse = piece
+	print("Mouse entered: ", piece.name)
+
+func _on_piece_mouse_exited(piece):
+	if current_piece_under_mouse == piece:
+		current_piece_under_mouse = null
+		print("Mouse exited: ", piece.name)
+
+func get_current_piece_name():
+	if current_piece_under_mouse:
+		return current_piece_under_mouse.name
+	return null

@@ -1,32 +1,32 @@
 [gd_scene load_steps=9 format=3 uid="uid://co7avfxwuux7e"]
 
 [ext_resource type="Script" path="res://Scripts/black_pikeman.gd" id="1_yc65v"]
-[ext_resource type="Texture2D" uid="uid://ck6mh10yqmege" path="res://Assets/pikeman.png" id="2_7whny"]
+[ext_resource type="Texture2D" uid="uid://1w6orskbe55t" path="res://Assets/pixil-frame-0 (2).png" id="2_7rs2f"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i84kd"]
-atlas = ExtResource("2_7whny")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynktg"]
+atlas = ExtResource("2_7rs2f")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_shum3"]
-atlas = ExtResource("2_7whny")
+[sub_resource type="AtlasTexture" id="AtlasTexture_uao05"]
+atlas = ExtResource("2_7rs2f")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tp4df"]
-atlas = ExtResource("2_7whny")
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2p8r"]
+atlas = ExtResource("2_7rs2f")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ec3ff"]
-atlas = ExtResource("2_7whny")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb655"]
+atlas = ExtResource("2_7rs2f")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4nigo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i84kd")
+"texture": SubResource("AtlasTexture_ynktg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_shum3")
+"texture": SubResource("AtlasTexture_uao05")
 }],
 "loop": true,
 "name": &"back",
@@ -34,10 +34,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tp4df")
+"texture": SubResource("AtlasTexture_g2p8r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ec3ff")
+"texture": SubResource("AtlasTexture_fb655")
 }],
 "loop": true,
 "name": &"front",
@@ -53,9 +53,10 @@ script = ExtResource("1_yc65v")
 [node name="black_pikeman" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4nigo")
-animation = &"back"
+animation = &"front"
 autoplay = "front"
-frame_progress = 0.363543
+frame = 1
+frame_progress = 0.010912
 
 [node name="black_pikeman_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_naowg")

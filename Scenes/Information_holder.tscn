@@ -1,14 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0eem0k3rbx7r"]
+[gd_scene load_steps=12 format=3 uid="uid://d0eem0k3rbx7r"]
 
 [ext_resource type="Script" path="res://Scripts/board.gd" id="1_yeoln"]
 [ext_resource type="Texture2D" uid="uid://dboa45h6e8tw7" path="res://Assets/SpriteSheet.png" id="2_rvta5"]
 [ext_resource type="FontFile" uid="uid://fa1hvobt0j4m" path="res://Assets/Yasmen.ttf" id="3_c4tig"]
+[ext_resource type="Texture2D" uid="uid://b32qlrwwa1bis" path="res://Assets/Screen assets/SpriteSheet.png" id="4_d7xl2"]
+[ext_resource type="PackedScene" uid="uid://op3jb5bcl061" path="res://Scenes/Pause.tscn" id="5_lth0a"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_w0iml"]
 keycode = 69
 
 [sub_resource type="Shortcut" id="Shortcut_bghwh"]
 events = [SubResource("InputEventKey_w0iml")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ibd82"]
+keycode = 83
+
+[sub_resource type="Shortcut" id="Shortcut_0b2cb"]
+events = [SubResource("InputEventKey_ibd82")]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eh0wy"]
+texture = ExtResource("4_d7xl2")
+region_rect = Rect2(164, 420, 22, 41)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v630l"]
+texture = ExtResource("4_d7xl2")
+region_rect = Rect2(57, 1496, 16, 31)
 
 [node name="Board" type="Control"]
 texture_filter = 1
@@ -19,15 +35,15 @@ script = ExtResource("1_yeoln")
 
 [node name="box" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(175.25, 47.375)
-scale = Vector2(0.617063, 0.346085)
+position = Vector2(175.25, 56.375)
+scale = Vector2(0.617063, 0.410142)
 texture = ExtResource("2_rvta5")
 region_enabled = true
 region_rect = Rect2(36.1211, 1664.36, 252.32, 281.696)
 
 [node name="outline" type="Sprite2D" parent="."]
-position = Vector2(175, 47.5)
-scale = Vector2(0.646018, 0.369048)
+position = Vector2(175, 56)
+scale = Vector2(0.646018, 0.436508)
 texture = ExtResource("2_rvta5")
 region_enabled = true
 region_rect = Rect2(336.452, 1678.68, 226.842, 252.558)
@@ -39,6 +55,7 @@ position = Vector2(148, 41)
 position = Vector2(200, 40)
 
 [node name="Label" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_left = 101.0
 offset_right = 252.0
@@ -71,9 +88,9 @@ fit_content = true
 [node name="End_turn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 175.0
-offset_top = 69.0
+offset_top = 84.0
 offset_right = 235.0
-offset_bottom = 92.0
+offset_bottom = 107.0
 theme_override_colors/font_pressed_color = Color(0.831267, 0.226641, 0.441705, 1)
 theme_override_fonts/font = ExtResource("3_c4tig")
 theme_override_font_sizes/font_size = 10
@@ -83,30 +100,51 @@ text = "End Turn"
 [node name="summon" type="Button" parent="."]
 layout_mode = 0
 offset_left = 114.0
-offset_top = 69.0
+offset_top = 84.0
 offset_right = 174.0
-offset_bottom = 92.0
-scale = Vector2(0.994767, 1.02157)
+offset_bottom = 107.0
 theme_override_colors/font_pressed_color = Color(0.831267, 0.226641, 0.441705, 1)
 theme_override_fonts/font = ExtResource("3_c4tig")
 theme_override_font_sizes/font_size = 10
+shortcut = SubResource("Shortcut_0b2cb")
 text = "Summon"
 
 [node name="Side1_Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 128.0
-offset_top = 47.0
+offset_top = 53.0
 offset_right = 174.0
-offset_bottom = 70.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("3_c4tig")
 
 [node name="Side2_Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 180.0
-offset_top = 47.0
+offset_top = 53.0
 offset_right = 226.0
-offset_bottom = 70.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("3_c4tig")
+
+[node name="pause_button" type="Button" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(10, 15)
+layout_mode = 0
+offset_left = 235.0
+offset_top = 50.0
+offset_right = 245.0
+offset_bottom = 65.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_eh0wy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eh0wy")
+theme_override_styles/normal = SubResource("StyleBoxTexture_v630l")
+
+[node name="pause_scene" parent="." instance=ExtResource("5_lth0a")]
+visible = false
+layout_mode = 1
+offset_left = -27.0
+offset_top = -35.0
+offset_right = 260.0
+offset_bottom = 126.0
 
 [connection signal="pressed" from="End_turn" to="." method="_on_end_turn_pressed"]
 [connection signal="pressed" from="summon" to="." method="_on_summon_pressed"]
+[connection signal="pressed" from="pause_button" to="." method="_on_pause_button_pressed"]

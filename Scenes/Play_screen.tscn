@@ -90,15 +90,21 @@ layout_mode = 2
 theme_override_constants/separation = 40
 
 [node name="play" type="Button" parent="Buttons/buttons"]
-custom_minimum_size = Vector2(160, 100)
+custom_minimum_size = Vector2(300, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("8_28s1c")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_rg7de")
+theme_override_font_sizes/font_size = 40
 shortcut = SubResource("Shortcut_a0y74")
+text = "Play"
 icon_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Buttons/buttons/play"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -118,14 +124,19 @@ text = "Play"
 fit_content = true
 
 [node name="quit" type="Button" parent="Buttons/buttons"]
-custom_minimum_size = Vector2(160, 100)
+custom_minimum_size = Vector2(300, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("8_28s1c")
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_rg7de")
+theme_override_font_sizes/font_size = 40
+text = "Quit"
 icon_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Buttons/buttons/quit"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -146,7 +157,7 @@ fit_content = true
 
 [node name="Credits" type="Button" parent="Buttons/buttons"]
 texture_filter = 1
-custom_minimum_size = Vector2(160, 100)
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8

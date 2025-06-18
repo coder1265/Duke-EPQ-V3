@@ -25,7 +25,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("left_mouse_click"):
 		if mouse_entered_self:
 			var is_white = get_node("/root/Main").is_white_turn
-			if is_white:
+			if not is_white:
 				do_moves()
 		if showing_moves:
 			print("This is showing_moves",showing_moves)
@@ -37,7 +37,7 @@ func _input(_event):
 func do_moves():
 	# get side, #get movement array
 	# check within board
-	# get white pieces, check white pieces, return correct array, check for movement 
+	# get  pieces, check  pieces, return correct array, check for movement 
 	#delete nodes if capturing
 	move_array.clear()
 	jump_array.clear()
@@ -90,10 +90,10 @@ func do_jump():
 	print("This is final jump array ",jump_array)
 
 func check_location(array):
-	# checks if any of the moves are on the location of a white piece
+	# checks if any of the moves are on the location of a  piece
 	var check_array2 = []
-	var all_white_pieces = get_tree().get_nodes_in_group("white_pieces")
-	for i in all_white_pieces:
+	var all_black_pieces = get_tree().get_nodes_in_group("black_pieces")
+	for i in all_black_pieces:
 		if i is Area2D and i != self:
 			var i_pos = board.local_to_map(i.global_position) - position_on_board
 			check_array2.append(i_pos)
@@ -134,7 +134,7 @@ func clicked_moves():
 	if is_front == false:
 		combined_array = jump_array
 	if combined_array.has(current_mouse_pos):
-		var enemy_areas = get_tree().get_nodes_in_group("black_pieces")
+		var enemy_areas = get_tree().get_nodes_in_group("white_pieces")
 		for area in enemy_areas:
 				var area_tilemap_pos = board.local_to_map(area.global_position) - position_on_board
 				if area_tilemap_pos == current_mouse_pos:
@@ -150,7 +150,7 @@ func next_turn():
 	else:
 		is_front = true
 		$wizard.play("front")
-	get_node("/root/Main").is_white_turn = false
+	get_node("/root/Main").is_white_turn = true
 	#change_turn()
 
 func hide_children():

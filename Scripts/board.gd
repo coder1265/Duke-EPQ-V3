@@ -1,5 +1,5 @@
 extends Control
-
+@onready var animplayer = $"pause_scene/AnimationPlayer/"
 var wduke = preload("res://Scenes/white_duke.tscn")
 #region for referencing all the images for the movement positions
 #var pikeman_front = preload("")
@@ -14,9 +14,9 @@ func _process(_delta):
 
 func display_data():
 	if $"..".is_white_turn == true:
-		$Turn_label.text = "It is white's turn"
+		$Turn_label.text = "It is white / Blue's turn"
 	elif $"..".is_white_turn == false:
-		$Turn_label.text = "It is black's turn"
+		$Turn_label.text = "It is Black / Red's turn"
 
 func show_clicked_imgs():
 	$Side1_Label.text = "Side 1"
@@ -35,3 +35,8 @@ func _on_summon_pressed():
 
 func _on_end_turn_pressed():
 	$"..".end_turn()
+
+
+func _on_pause_button_pressed():
+	$pause_scene.show()
+	animplayer.play("show")
