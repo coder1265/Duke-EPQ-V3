@@ -21,6 +21,7 @@ func display_data():
 func show_clicked_imgs():
 	$Side1_Label.text = "Side 1"
 	$Side2_Label.text = "Side 2"
+	
 	#if get_node("Piece Holder/white_duke").is_valid_instance():
 		#print("White duke node is valid")
 		#if wduke.mouse_entered_white_duke == true:

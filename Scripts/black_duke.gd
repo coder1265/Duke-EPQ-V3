@@ -8,7 +8,7 @@ var mouse_entered_black_duke: bool = false
 var movement_pos = preload("res://Scenes/move_holder.tscn")
 var summon_holder = preload("res://Scenes/summon_holder.tscn")
 #var summonable_pieces = ["footman","pikeman","pikeman","pikeman","champion","seer","wizard","assassin","priest"]
-var summonable_pieces = ["footman","pikeman","pikeman","pikeman","champion","priest","wizard"]
+var summonable_pieces = ["footman","pikeman","pikeman","pikeman","champion","priest","wizard","seer"]
 var possible_moves = []
 var possible_moves_on_board = []
 var placeable_locations = []
@@ -127,7 +127,7 @@ func do_moves(_event):
 		var umm = iterable + duke_pos
 		if umm.x > -1 and umm.x < 6 and umm.y > -1 and umm.y < 6:
 			possible_moves_on_board.push_back(iterable) 
-	possible_moves_on_board.remove_at(possible_moves_on_board.find(Vector2i(0,0)))
+	#possible_moves_on_board.remove_at(possible_moves_on_board.find(Vector2i(0,0)))
 	print("Possible moves are: ",possible_moves_on_board)
 	checked_move_holders = updates_moves_to_not_include_black_pieces(possible_moves_on_board)
 	print("This is active move holders", checked_move_holders)

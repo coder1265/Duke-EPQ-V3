@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfrmllnko5woo"]
+
+[ext_resource type="Script" path="res://Scripts/black_seer.gd" id="1_csdwi"]
+[ext_resource type="Texture2D" uid="uid://c7fmuk5ljbgb2" path="res://Assets/pixil-frame-0 (6).png" id="2_e7yxq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1e28"]
+atlas = ExtResource("2_e7yxq")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyh2m"]
+atlas = ExtResource("2_e7yxq")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bei2"]
+atlas = ExtResource("2_e7yxq")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmifo"]
+atlas = ExtResource("2_e7yxq")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_41xj0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1e28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyh2m")
+}],
+"loop": true,
+"name": &"back",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bei2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmifo")
+}],
+"loop": true,
+"name": &"front",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtenp"]
+size = Vector2(16, 16)
+
+[node name="seer" type="Area2D" groups=["active_pieces", "black_pieces", "seer"]]
+script = ExtResource("1_csdwi")
+
+[node name="seer_img" type="AnimatedSprite2D" parent="." groups=["active_pieces", "white_pieces"]]
+texture_filter = 1
+position = Vector2(-4.76837e-07, 0)
+scale = Vector2(0.333333, 0.333333)
+sprite_frames = SubResource("SpriteFrames_41xj0")
+animation = &"back"
+autoplay = "front"
+frame = 1
+frame_progress = 0.489363
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mtenp")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -35,10 +35,8 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAACAAAAAQAAAAAAAAAEAAAAAQAAAAA
 tile_set = SubResource("TileSet_o71e4")
 
 [node name="Board" parent="." instance=ExtResource("3_ct5wo")]
-offset_left = 10.0
-offset_top = 2.0
-offset_right = 10.0
-offset_bottom = 2.0
+offset_left = 13.0
+offset_right = 13.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 

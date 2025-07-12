@@ -37,6 +37,7 @@ board=""
 black_pieces=""
 black_duke="group to check if the black duke is there"
 white_duke=""
+seer=""
 
 [input]
 

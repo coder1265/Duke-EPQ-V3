@@ -34,6 +34,8 @@ var black_footman = preload("res://Scenes/black_pieces/black_footman.tscn")
 var black_champion = preload("res://Scenes/black_pieces/black_champion.tscn")
 var black_priest = preload("res://Scenes/black_pieces/black_priest.tscn")
 var black_wizard = preload("res://Scenes/black_pieces/black_wizard.tscn")
+var black_pikeman = preload("res://Scenes/black_pieces/black_pikeman.tscn")
+var black_seer = preload("res://Scenes/black_pieces/black_seer.tscn")
 #endregion
 
 # Called when the node enters the scene tree for the first time.
@@ -188,19 +190,19 @@ func summoned_a_piece(piece_to_make):
 				#var footman_instantiate_pos = Vector2i(2,2)
 				footman_scene.position = board.map_to_local(instantiate_location)
 				next_turn()
-			#if piece_to_make == "pikeman":
-				#var pikeman_scene = white_pikeman.instantiate()
-				#add_child(pikeman_scene)
-				#pikeman_scene.position = board.map_to_local(instantiate_location)
-				#next_turn()
+			if piece_to_make == "pikeman":
+				var pikeman_scene = black_pikeman.instantiate()
+				add_child(pikeman_scene)
+				pikeman_scene.position = board.map_to_local(instantiate_location)
+				next_turn()
 			if piece_to_make == "champion":
 				var champion_scene = black_champion.instantiate()
 				add_child(champion_scene)
 				champion_scene.position = board.map_to_local(instantiate_location)
-			#if piece_to_make == "seer":
-				#var seer_scene = white_seer.instantiate()
-				#add_child(seer_scene)
-				#seer_scene.position = board.map_to_local(instantiate_location)
+			if piece_to_make == "seer":
+				var seer_scene = black_seer.instantiate()
+				add_child(seer_scene)
+				seer_scene.position = board.map_to_local(instantiate_location)
 			if piece_to_make == "wizard":
 				var wizard_scene = black_wizard.instantiate()
 				add_child(wizard_scene)

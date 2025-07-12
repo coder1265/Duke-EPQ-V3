@@ -83,11 +83,12 @@ func get_summon_data():
 					new_positions.erase(i)
 			#print("This is new new placeable locations", placeable_locations)
 			#print("This is new positions ",new_positions)
-			for i in range(new_positions.size()):
+			#for i in range(new_positions.size()):
+			for i in new_positions:
 				var summon_place = summon_holder.instantiate()
 				add_child(summon_place)
 				#summon_place.position = $"/root/Main/board_layer".map_to_local(Vector2i(placeable_locations[i]))
-				summon_place.global_position = Vector2i(new_positions[i]*cell_size) + Vector2i(8,8)
+				summon_place.global_position = Vector2i(i*cell_size) + Vector2i(8,8)
 			show_summon_locations = true
 	else:
 		print("Can't summon")
@@ -171,6 +172,5 @@ func delete_children():
 		if is_instance_of($".".get_children()[child],Area2D):
 			$".".get_child(child).queue_free()
 	show_moves = false
-
 func change_turn():
 	get_node("/root/Main").is_white_turn = false
