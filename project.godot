@@ -18,7 +18,7 @@ config/icon="res://Assets/Screen assets/Loading screen.png"
 
 [autoload]
 
-Globals="*res://Scripts/globals.gd"
+Globals="*res://Assets/Music/globals.gd"
 
 [editor]
 

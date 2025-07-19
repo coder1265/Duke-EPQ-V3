@@ -137,7 +137,7 @@ func summoned_white():
 		white_duke.get_summon_data()
 
 func summoned_black():
-	print("You have summoned black piece")
+	#print("You have summoned black piece")
 	var all_children = get_children()
 	for child in all_children:
 		if child.name == "black_duke":

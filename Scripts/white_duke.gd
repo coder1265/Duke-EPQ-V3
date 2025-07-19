@@ -6,7 +6,7 @@ extends Area2D
 @onready var board = $"/root/Main/board_layer"
 var movement_pos = preload("res://Scenes/move_holder.tscn")
 var summon_holder = preload("res://Scenes/summon_holder.tscn")
-var summonable_pieces = ["footman","pikeman","pikeman","pikeman","champion","seer","wizard","assassin","priest"]
+var summonable_pieces = Globals.white_duke_sumonable
 var possible_moves = []
 var possible_moves_on_board = []
 var placeable_locations = []
@@ -60,7 +60,6 @@ func _input(event):
 			delete_children()
 			show_summon_locations = false
 			
-			
 #region controls code for summoning
 func get_summon_data():
 	if summonable_pieces.size() > 0:
@@ -81,9 +80,18 @@ func get_summon_data():
 			for i in check3:
 				if check3.has(i):
 					new_positions.erase(i)
-			#print("This is new new placeable locations", placeable_locations)
-			#print("This is new positions ",new_positions)
-			#for i in range(new_positions.size()):
+			var all_black_children = get_tree().get_nodes_in_group("black_pieces")
+			var black_position_array: Array = []
+			for piece in all_black_children:
+				var world_pos = piece.global_position # returns in pixels 
+				var black_piece_local_to_tilemap = board.local_to_map(world_pos) # converts to local to the tilemap
+				map_not_valid_locations.append(black_piece_local_to_tilemap)
+				var white_piece_local_to_duke = black_piece_local_to_tilemap - duke_pos # converts the tilemap locations to local to the duke by minusing the duke position of all the places, so effectively moves 0,0 to the dukes position
+				black_position_array.append(white_piece_local_to_duke)
+				print("This is array of black pieces when summoning ", black_position_array)
+			for i in black_position_array:
+				if black_position_array.has(i):
+					new_positions.erase(i)
 			for i in new_positions:
 				var summon_place = summon_holder.instantiate()
 				add_child(summon_place)

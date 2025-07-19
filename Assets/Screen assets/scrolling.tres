@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://jwqgfpa5uf34"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://jwqgfpa5uf34"]
 
 [ext_resource type="Texture2D" uid="uid://dboa45h6e8tw7" path="res://Assets/SpriteSheet.png" id="1_2xx33"]
 [ext_resource type="Texture2D" uid="uid://dan6csmgibwva" path="res://Assets/Screen assets/Sprite sheet for Basic Pack.png" id="1_vekqv"]
@@ -27,6 +27,14 @@ texture_margin_top = 7.0
 texture_margin_right = 7.0
 texture_margin_bottom = 7.0
 region_rect = Rect2(153, 9, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wnbsj"]
+texture = ExtResource("1_vekqv")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(11, 155, 26, 28)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5yf55"]
 texture = ExtResource("1_vekqv")
@@ -59,6 +67,7 @@ Button/styles/pressed = SubResource("StyleBoxTexture_sxk1r")
 Label/font_sizes/font_size = 30
 Label/fonts/font = ExtResource("3_bah0p")
 Label/styles/normal = SubResource("StyleBoxTexture_leq74")
+Panel/styles/panel = SubResource("StyleBoxTexture_wnbsj")
 VScrollBar/styles/grabber = SubResource("StyleBoxTexture_5yf55")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_n7wae")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_n7wae")
